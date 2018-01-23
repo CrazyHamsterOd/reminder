@@ -11,13 +11,22 @@ div.reminderWrapper{
 }
 
 div.activeWrapper{
-
+    width: 80%;
+    min-height: 50px;
+    background-color: rgb(148, 255, 127);
+    margin-bottom: 2px;
 }
 
 div.plannedWrapper{
-
+    width: 80%;
+    min-height: 50px;
+    background-color: rgb(146, 127, 255);
+    margin-bottom: 2px;
 }
 
 div.doneWrapper{
-
+    width: 80%;
+    min-height: 50px;
+    background-color: rgb(255, 127, 127);
+    margin-bottom: 2px;
 }

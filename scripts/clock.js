@@ -6,7 +6,7 @@ Clock.prototype.draw = function () {
   let currenData = new Date();
   let parentElem = document.getElementsByClassName("clockWrapper")[0];
   let divClock = document.createElement("div");
-  divClock.innerHTML = currenData.toLocaleString();
+  divClock.innerHTML = (currenData.toLocaleString()).substr(12, 8);
   parentElem.innerHTML = "";
   parentElem.appendChild(divClock);
 }

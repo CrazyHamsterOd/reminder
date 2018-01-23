@@ -1,7 +1,7 @@
 function Reminder() {
   this.plannedNote = [];
   this.activeNote = [];
-  this.doneNore = [];
+  this.doneNote = [];
 }
 
 Reminder.prototype.addNote = function () {
@@ -13,12 +13,18 @@ Reminder.prototype.startCheck = function () {
   let self = this;
   let interval = setInterval(function(){
     self.plannedNote.map(function(el, i, arr){
-      
-
+      if(el.checkStatus(true)){
+        arr.splice(i, 1);
+        self.activeNote.push(el);
+      }
     });
-    self.plannedNote.map(function(el, i, arr){
-      
+    self.activeNote.map(function(el, i, arr){
+      if(el.checkStatus(false)){
+        arr.splice(i, 1);
+        self.doneNote.push(el);
+      }
     });
+    self.draw();
   }, 1000);
 }
 
@@ -26,19 +32,19 @@ Reminder.prototype.draw = function(){
   let activeWrapper = document.getElementsByClassName("activeWrapper")[0];
   let plannedWrapper = document.getElementsByClassName("plannedWrapper")[0];
   let doneWrapper = document.getElementsByClassName("doneWrapper")[0];
+  activeWrapper.innerHTML = "";
   plannedWrapper.innerHTML = "";
   doneWrapper.innerHTML = "";
-  //debugger;
   drawNote(this.activeNote, activeWrapper);
   drawNote(this.plannedNote, plannedWrapper);
-  drawNote(this.doneNore, doneWrapper);
+  drawNote(this.doneNote, doneWrapper);
 }
 
 function drawNote(arr, div){
   arr.map(function(el){
     let noteDiv = document.createElement("div");
-    noteDiv.className = "plannedNote"; //debugger;
-    noteDiv.innerHTML = el.text + el.time;
+    noteDiv.className = "plannedNote";
+    noteDiv.innerHTML = el.text +" "+el.startTime.hour+" "+el.finishTime.min;
     div.appendChild(noteDiv);
   });
 }
