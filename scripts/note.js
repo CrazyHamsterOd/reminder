@@ -11,7 +11,7 @@ Note.prototype.add = function () {
 
 Note.prototype.checkStatus = function (planned) {
   let currentTime = getTimeFromDate(new Date, false);
-  let noteTime = (planned) ? this.startTime : this.finishTime ; //debugger;
+  let noteTime = (planned) ? this.startTime : this.finishTime ;
   if ((currentTime.hour >= noteTime.hour && currentTime.min >= noteTime.min)){
     return true;
   }
@@ -20,9 +20,9 @@ Note.prototype.checkStatus = function (planned) {
 }
 
 function getNoteData() {
-  let reminderText = prompt("Text");
-  let reminderStartTime = prompt("StartTime");
-  let reminderFinishTime = prompt("FinishTime");
+  let reminderText = prompt("Enter text note");
+  let reminderStartTime = prompt("Enter start time (format HH:MM)");
+  let reminderFinishTime = prompt("Enter finish time (format HH:MM)");
 
   let result = {
     text: reminderText,
